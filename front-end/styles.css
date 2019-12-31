@@ -1,11 +1,12 @@
 body {
-    background-color: #b4da55;
+    background-color: black;
 }
 
 h1 {
   text-align: center;
   margin: 10;
   padding: 100;
+  color: white;
   background-color: #f42069;
   font: 50px Courier, monospace;
   font-style: italic;
@@ -13,7 +14,7 @@ h1 {
 
 #GameBoardCanvas {
     text-align: center;
-    border: 1px solid red;
+    border: 1px solid blue;
     padding: 5px;
     padding-left: 0;
     padding-right: 0;
