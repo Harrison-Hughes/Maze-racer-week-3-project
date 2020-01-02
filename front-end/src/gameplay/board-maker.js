@@ -35,4 +35,9 @@ const gridMerger = (topLeft, topRight) => {
 }
 
 let board = gridMerger(board1a, board1b);
-board[14][13] = 25;
+
+const editCoordNum = (x, y, newnum) => {
+    board[x][y] = newnum;
+}
+
+editCoordNum(14, 13, 25);

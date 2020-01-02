@@ -1,3 +1,13 @@
+let primary =  '#ffacfc';
+let secondary =  ' #f148fb';
+let tertiary =  ' #7122fa';
+let quatary =  ' #560a86';
+
+// let primary =  '#e92efb';
+// let secondary =  ' #ff2079';
+// let tertiary =  ' #440bd4';
+// let quatary =  ' #04005e';
+
 function loadDraw() {
     let width = canvas.width; let blockSize = width/board.length; let ctx = canvas.getContext('2d');
 
@@ -8,7 +18,12 @@ function loadDraw() {
 
             //Draw a wall
             if(board[y][x] === 1){
-                ctx.fillStyle="grey";
+                ctx.fillStyle=primary;
+                ctx.fillRect(x*blockSize, y*blockSize, blockSize, blockSize);
+            }
+
+            if(board[y][x] === 0){
+                ctx.fillStyle=tertiary;
                 ctx.fillRect(x*blockSize, y*blockSize, blockSize, blockSize);
             }
             //Draw the goals
@@ -58,7 +73,12 @@ function draw() {
 
             //Draw a wall
             if(board[y][x] === 1){
-                ctx.fillStyle="grey";
+                ctx.fillStyle=primary;
+                ctx.fillRect(x*blockSize, y*blockSize, blockSize, blockSize);
+            }
+
+            if(board[y][x] === 0){
+                ctx.fillStyle=tertiary;
                 ctx.fillRect(x*blockSize, y*blockSize, blockSize, blockSize);
             }
             //Draw the goals

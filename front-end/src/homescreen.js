@@ -21,10 +21,13 @@ const startGame = () => {
         gameLoaded = true
     }
     else if (gameLoaded === true) {
-        player1.unfrozen = true; player2.unfrozen = true; draw();
-        gameStarted = true
+        gameStarted = true;
+        startCountdown()
     }
 }
 
-const loadPlayerData = () => {
+const startCountdown = () => {
+    player1.unfrozen = true; player2.unfrozen = true; draw();
 }
+
+const loadPlayerData = () => {}
