@@ -52,7 +52,6 @@ const arrayOfBlankCoords = () => {
             
         }
     }
-    // console.log(arr);
     return arr
 }
 
@@ -84,6 +83,8 @@ const symmetricalPoints = arr => {
     return newArr
 } 
 
-const genPlayerTargets = () => {
-    
+const genPlayerTargets = (num) => {
+    let player1Targets = noBlnkCrds(num);
+    let player2Targets = symmetricalPoints(player1Targets);
+    return [player1Targets, player2Targets]
 }

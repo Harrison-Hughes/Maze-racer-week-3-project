@@ -3,7 +3,9 @@ const player1 = {
     y: 0,
     keys: 0,
     unfrozen: false,
-    won: false
+    won: false,
+    targets: false,
+    nextTarget: false,
 };
 
 const player2 = {
@@ -11,5 +13,7 @@ const player2 = {
     y: parseInt(board.length)-1,
     keys: 0,
     unfrozen: false,
-    won: false
+    won: false,
+    targets: false,
+    nextTarget: false,
 };

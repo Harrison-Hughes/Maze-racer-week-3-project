@@ -126,8 +126,10 @@ function draw() {
 
     if (player1.x === player2.x && player1.y === player2.y) {
         // player overlap
-        ctx.beginPath(); ctx.fillStyle = "yellow"; ctx.arc(player1.x*blockSize+half, player1.y*blockSize+half, half, 1/2*Math.PI, 3/2*Math.PI); ctx.fill();
-        ctx.beginPath(); ctx.fillStyle = "red"; ctx.arc(player1.x*blockSize+half, player1.y*blockSize+half, half, 3/2*Math.PI, 1/2*Math.PI); ctx.fill();
+        ctx.beginPath(); ctx.fillStyle = "white"; ctx.arc(player1.x*blockSize+half, player1.y*blockSize+half, half, 1/2*Math.PI, 3/2*Math.PI); ctx.fill(); 
+        ctx.beginPath(); ctx.fillStyle = "black"; ctx.arc(player1.x*blockSize+half, player1.y*blockSize+half, half, 3/2*Math.PI, 1/2*Math.PI); ctx.fill();
+        // ctx.beginPath(); ctx.fillStyle = "white"; ctx.arc(player1.x*blockSize+half, player1.y*blockSize+half, half, 1/2*Math.PI, 1*Math.PI); ctx.fill(); ctx.arc(player1.x*blockSize+half, player1.y*blockSize+half, half, 3/2*Math.PI, 2*Math.PI); ctx.fill();
+        // ctx.beginPath(); ctx.fillStyle = "black"; ctx.arc(player1.x*blockSize+half, player1.y*blockSize+half, half, 1*Math.PI, 3/2*Math.PI); ctx.fill(); ctx.arc(player1.x*blockSize+half, player1.y*blockSize+half, half, 0*Math.PI, 1/2*Math.PI); ctx.fill();
     }
 
     else {
@@ -142,4 +144,22 @@ function draw() {
         ctx.arc(player2.x*blockSize+half, player2.y*blockSize+half, half, 0, 2*Math.PI);
         ctx.fill();
     }
+
+    // draw their targets
+    // player 1
+    if (!!player1.nextTarget) {
+        let tx = player1.nextTarget[0];let ty = player1.nextTarget[1] 
+        ctx.beginPath();
+        ctx.fillStyle = "white";
+        ctx.arc(tx*blockSize+half, ty*blockSize+half, half/2, 0, 2*Math.PI);
+        ctx.fill();
+    };
+
+    if (!!player2.nextTarget) {
+        let tx = player2.nextTarget[0];let ty = player2.nextTarget[1] 
+        ctx.beginPath();
+        ctx.fillStyle = "black";
+        ctx.arc(tx*blockSize+half, ty*blockSize+half, half/2, 0, 2*Math.PI);
+        ctx.fill();
+    };    
 }

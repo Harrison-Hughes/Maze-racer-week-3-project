@@ -58,18 +58,44 @@ function KeyboardController(keys, repeat) {
 };
 
 KeyboardController({
-    73: function() { if (canMove(player1, player1.x, player1.y-1)) {player1.y--; draw()} },
-    74: function() { if (canMove(player1, player1.x-1, player1.y)) {player1.x--; draw()} },
-    75: function() { if (canMove(player1, player1.x, player1.y+1)) {player1.y++; draw()} },
-    76: function() { if (canMove(player1, player1.x+1, player1.y)) {player1.x++; draw()} },
-    87: function() { if (canMove(player2, player2.x, player2.y-1)) {player2.y--; draw()} },
-    65: function() { if (canMove(player2, player2.x-1, player2.y)) {player2.x--; draw()} },
-    83: function() { if (canMove(player2, player2.x, player2.y+1)) {player2.y++; draw()} },
-    68: function() { if (canMove(player2, player2.x+1, player2.y)) {player2.x++; draw()} },
+    73: function() { if (canMove(player1, player1.x, player1.y-1)) {player1.y--; checkMajorChange(player1); draw()} },
+    74: function() { if (canMove(player1, player1.x-1, player1.y)) {player1.x--; checkMajorChange(player1); draw()} },
+    75: function() { if (canMove(player1, player1.x, player1.y+1)) {player1.y++; checkMajorChange(player1); draw()} },
+    76: function() { if (canMove(player1, player1.x+1, player1.y)) {player1.x++; checkMajorChange(player1); draw()} },
+    87: function() { if (canMove(player2, player2.x, player2.y-1)) {player2.y--; checkMajorChange(player2); draw()} },
+    65: function() { if (canMove(player2, player2.x-1, player2.y)) {player2.x--; checkMajorChange(player2); draw()} },
+    83: function() { if (canMove(player2, player2.x, player2.y+1)) {player2.y++; checkMajorChange(player2); draw()} },
+    68: function() { if (canMove(player2, player2.x+1, player2.y)) {player2.x++; checkMajorChange(player2); draw()} },
 }, 40);
 
+const checkMajorChange = (player) => {
+    checkHit(player);
+    checkGameOver(player);
+}
 
-const addPlayerKey = (player) => {
+const checkGameOver = (player) => {
+    if ((player.x === 14 || player.x === 15) && (player.y === 14 || player.y === 15)) {endGame(player)}
+}
+
+const endGame = player => {
+    player1.unfrozen = false; player2.unfrozen = false;
+}
+
+const checkHit = (player) => {
+    if (player.x === player.nextTarget[0] && player.y === player.nextTarget[1]) {hitTarget(player)}
+}
+
+const hitTarget = (player) => {
+    
+    makeSound('ding');
+    updateGate(player);
+    player.keys += 1;
+    genTarget(player);
+    draw(); 
+}
+
+
+const updateGate = (player) => {
     if (player === player1) {
         if (board[gate1coords[0]][gate1coords[1]] > 11) {board[gate1coords[0]][gate1coords[1]] -= 1}
         else if (board[gate1coords[0]][gate1coords[1]] === 11) {board[gate1coords[0]][gate1coords[1]] = 0}
@@ -78,8 +104,8 @@ const addPlayerKey = (player) => {
     else if (player === player2) {
         if (board[gate2coords[0]][gate2coords[1]] > 21) {board[gate2coords[0]][gate2coords[1]] -= 1}
         else if (board[gate2coords[0]][gate2coords[1]] === 21) {board[gate2coords[0]][gate2coords[1]] = 0}
-        return board[gate2coords[0]][gate2coords[1]]}
-    draw(); makeSound(ding);
+        return board[gate2coords[0]][gate2coords[1]]
+    };
 }
 
 const makeSound = (sound) => {
@@ -87,4 +113,14 @@ const makeSound = (sound) => {
     if (!audio) return;
     audio.currentTime = 0;
     audio.play();
+}
+
+const genTarget = (player) => {
+    let targetTally = player.keys;
+    if (targetTally < 5) {
+        player.nextTarget = player.targets[targetTally];
+    }
+    else if (targetTally === 5) {
+        player.nextTarget = false;
+    }
 }
