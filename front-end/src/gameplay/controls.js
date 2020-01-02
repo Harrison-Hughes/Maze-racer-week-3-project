@@ -7,16 +7,16 @@ function canMove(player, x, y){
     let gate1 = board[gate1coords[0]][gate1coords[1]];
     let gate2 = board[gate2coords[0]][gate2coords[1]];
     // console.log(`${x}, ${y}, ${player}, ${gate1}`);
-    if (gameStarted === true && (y>=0) && (y<board.length) && (x >= 0) && (x < board[y].length) && 
+    if (gameStarted === 1 && (y>=0) && (y<board.length) && (x >= 0) && (x < board[y].length) && 
     (board[y][x] === 0 || board[y][x] === -1 ||board[y][x] === 2 ) && player.unfrozen){
         if (player === player1) {
             if (x === gate2coords[0] && y === gate2coords[1]) {return false}
-            else if (gate1 > 10 && x === gate1coords[0] && y === gate1coords[1]){return false}
+            else if (gate1 > 10 && x === gate1coords[0] && y === gate1coords[1]) {return false}
             else {return true}
         }
         else if (player === player2) {
             if (x === gate1coords[0] && y === gate1coords[1]) {return false}
-            else if (gate2 > 20 && x === gate2coords[0] && y === gate2coords[1]){return false}
+            else if (gate2 > 20 && x === gate2coords[0] && y === gate2coords[1]) {return false}
             else {return true}
         }
         else {return false}
@@ -66,7 +66,7 @@ KeyboardController({
     65: function() { if (canMove(player2, player2.x-1, player2.y)) {player2.x--; draw()} },
     83: function() { if (canMove(player2, player2.x, player2.y+1)) {player2.y++; draw()} },
     68: function() { if (canMove(player2, player2.x+1, player2.y)) {player2.x++; draw()} },
-}, 20);
+}, 40);
 
 
 const addPlayerKey = (player) => {

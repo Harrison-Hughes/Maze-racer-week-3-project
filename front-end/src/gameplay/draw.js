@@ -13,10 +13,16 @@ function loadDraw() {
 
     ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.clearRect(0, 0, width, width);
 
-    for(let y = 0; y < board.length; y++){
-        for(let x = 0; x < board[y].length; x++){
+    // for(let y = 0; y < board.length; y++){
+        board.forEach(function (iY,y,aY){
+            setTimeout(function (){
+                // debugger
+            
+            iY.forEach(function (iX,x,aX){
+                setTimeout(function(iY,iX){
 
-            //Draw a wall
+                
+                //Draw a wall
             if(board[y][x] === 1){
                 ctx.fillStyle=primary;
                 ctx.fillRect(x*blockSize, y*blockSize, blockSize, blockSize);
@@ -40,24 +46,26 @@ function loadDraw() {
 
             //Draw the start squares
             else if(board[y][x] === 2){
-                ctx.fillStyle="#46f700";
+                ctx.fillStyle=secondary;
                 ctx.fillRect(x*blockSize, y*blockSize, blockSize, blockSize);
             }
 
             //Draw the gate squares
             else if(board[y][x] >= 10 && board[y][x] < 20){
-                ctx.fillStyle="rgb(255, 0, 0)"; ctx.fillRect(x*blockSize, y*blockSize, blockSize, blockSize);
-                let hitsRemaining = board[y][x]%10
-                ctx.fillStyle="#ddd"; ctx.font = "13px Arial"; ctx.fillText(`${hitsRemaining}`, (x+1/4)*blockSize-1, (y+1)*blockSize-1)
-            }
-            
-            else if(board[y][x] >= 20 && board[y][x] < 30){
-                ctx.fillStyle="yellow"; ctx.fillRect(x*blockSize, y*blockSize, blockSize, blockSize);
+                ctx.fillStyle="white"; ctx.fillRect(x*blockSize, y*blockSize, blockSize, blockSize);
                 let hitsRemaining = board[y][x]%10
                 ctx.fillStyle="black"; ctx.font = "13px Arial"; ctx.fillText(`${hitsRemaining}`, (x+1/4)*blockSize-1, (y+1)*blockSize-1)
             }
-        }
-    }
+            
+            else if(board[y][x] >= 20 && board[y][x] < 30){
+                ctx.fillStyle="black"; ctx.fillRect(x*blockSize, y*blockSize, blockSize, blockSize);
+                let hitsRemaining = board[y][x]%10
+                ctx.fillStyle="white"; ctx.font = "13px Arial"; ctx.fillText(`${hitsRemaining}`, (x+1/4)*blockSize-1, (y+1)*blockSize-1)
+            }
+        },3*x)
+            })
+        }, 90*y)
+    })
 }
 
 
@@ -95,21 +103,21 @@ function draw() {
 
             //Draw the start squares
             else if(board[y][x] === 2){
-                ctx.fillStyle="#46f700";
+                ctx.fillStyle=secondary;
                 ctx.fillRect(x*blockSize, y*blockSize, blockSize, blockSize);
             }
 
             //Draw the gate squares
             else if(board[y][x] >= 10 && board[y][x] < 20){
-                ctx.fillStyle="rgb(255, 0, 0)"; ctx.fillRect(x*blockSize, y*blockSize, blockSize, blockSize);
+                ctx.fillStyle="white"; ctx.fillRect(x*blockSize, y*blockSize, blockSize, blockSize);
                 let hitsRemaining = board[y][x]%10
-                ctx.fillStyle="#ddd"; ctx.font = "13px Arial"; ctx.fillText(`${hitsRemaining}`, (x+1/4)*blockSize-1, (y+1)*blockSize-1)
+                ctx.fillStyle="black"; ctx.font = "13px Arial"; ctx.fillText(`${hitsRemaining}`, (x+1/4)*blockSize-1, (y+1)*blockSize-1)
             }
             
             else if(board[y][x] >= 20 && board[y][x] < 30){
-                ctx.fillStyle="yellow"; ctx.fillRect(x*blockSize, y*blockSize, blockSize, blockSize);
+                ctx.fillStyle="black"; ctx.fillRect(x*blockSize, y*blockSize, blockSize, blockSize);
                 let hitsRemaining = board[y][x]%10
-                ctx.fillStyle="black"; ctx.font = "13px Arial"; ctx.fillText(`${hitsRemaining}`, (x+1/4)*blockSize-1, (y+1)*blockSize-1)
+                ctx.fillStyle="white"; ctx.font = "13px Arial"; ctx.fillText(`${hitsRemaining}`, (x+1/4)*blockSize-1, (y+1)*blockSize-1)
             }}
     }
 
@@ -125,12 +133,12 @@ function draw() {
     else {
         // player 1
         ctx.beginPath();
-        ctx.fillStyle = "red";
+        ctx.fillStyle = "white";
         ctx.arc(player1.x*blockSize+half, player1.y*blockSize+half, half, 0, 2*Math.PI);
         ctx.fill();
         // player 2
         ctx.beginPath();
-        ctx.fillStyle = "yellow";
+        ctx.fillStyle = "black";
         ctx.arc(player2.x*blockSize+half, player2.y*blockSize+half, half, 0, 2*Math.PI);
         ctx.fill();
     }

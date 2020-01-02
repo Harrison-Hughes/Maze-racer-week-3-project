@@ -41,3 +41,49 @@ const editCoordNum = (x, y, newnum) => {
 }
 
 editCoordNum(14, 13, 25);
+
+const arrayOfBlankCoords = () => {
+    let arr = [];
+    // console.log(board);
+    for(let y = 0; y < board.length; y++){
+        for(let x = 0; x < board[y].length; x++){
+            let pairArr = [x, y];
+            if (board[y][x] === 0) {arr.push(pairArr)};
+            
+        }
+    }
+    // console.log(arr);
+    return arr
+}
+
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+const noBlnkCrds = (num) => {
+    let arr = arrayOfBlankCoords();
+    let newArr = []
+    for(let i = 0; i < num; i++){
+        let int = getRandomInt(0, arr.length);
+        newArr.push(arr[int])
+    }
+    console.log(newArr)
+    return newArr
+}
+
+const symmetricalPoints = arr => {
+    let newArr = [];
+    for (let i = 0; i < arr.length; i++){
+        let newCoords = [0, 0];
+        newCoords[0] = board.length - 1 - arr[i][0]; newCoords[1] = board.length - 1 - arr[i][1]; 
+        newArr.push(newCoords)
+    }
+    console.log(newArr)
+    return newArr
+} 
+
+const genPlayerTargets = () => {
+    
+}
