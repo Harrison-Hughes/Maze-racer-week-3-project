@@ -34,4 +34,5 @@ const gridMerger = (topLeft, topRight) => {
     return verticalMerge(topQuads, bottomQuads)
 }
 
-const board = gridMerger(board1a, board1b)
+let board = gridMerger(board1a, board1b);
+board[14][13] = 25;
