@@ -1,4 +1,4 @@
-# M A Z E R A C E R
+# M A Z E   R A C E R
 
 # Built by Harrison & Hiroshi
 
