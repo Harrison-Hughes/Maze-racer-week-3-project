@@ -82,7 +82,7 @@ const endGame = player => {
     player.won = true; 
     deconstruct(player);
     setTimeout(function (){displayWinMessage(player)}, 3000);
-    
+    setTimeout(function (){optionToReset()}, 3000);
 }
 
 const checkHit = (player) => {

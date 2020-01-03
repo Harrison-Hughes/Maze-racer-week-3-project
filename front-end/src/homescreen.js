@@ -18,13 +18,20 @@ const startGame = () => {
     if (gameLoaded === 0) {
         canvas.style.visibility = 'visible';
         loadDraw();
+        head2.setAttribute('class', 'auto'); 
         head2.innerText = "LOADING . . .";
-        setTimeout(function(){gameLoaded = 1; head2.innerText = 'START'}, 3300)
+        setTimeout(function(){gameLoaded = 1; head2.innerText = 'START'; head2.setAttribute('class', 'point');}, 3300)
     }
     else if (gameLoaded === 1) {
         gameLoaded = 2;
         gameStarted = 1;
-        startCountdown()
+        startCountdown();
+        head2.setAttribute('class', 'auto');
+    }
+    else if (gameLoaded === 3) {
+        gameLoaded = 2;
+        gameStarted = 1;
+        head2.setAttribute('class', 'point');
     }
 }
 
@@ -44,4 +51,12 @@ const loadTargets = () => {
     player1.targets = targets[0];
     player2.targets = targets[1];
     genTarget(player1); genTarget(player2)
+}
+
+const optionToReset = () => {
+    let head2 = document.querySelector("body h2");
+    head2.innerText = "RESET";
+    head2.setAttribute('class', 'point');
+    gameStarted = 0;
+    gameLoaded = 0;
 }
