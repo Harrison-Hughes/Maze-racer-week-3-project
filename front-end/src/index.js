@@ -2,62 +2,11 @@ document.addEventListener('DOMContentLoaded', function(){
     allPlayers();
 })
 
- 
-
-const usersURL = "http://localhost:3000/users"
-
-const canvas = document.querySelector('#GameBoardCanvas')
-
-let board = [
-    [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [ 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
-    [ 1, 0, 1, 0, 0, 0, 0, 0, 1, 0],
-    [ 0, 0, 0, 0, 1, 1, 1, 0, 1, 0],
-    [ 0, 1, 1, 0, 0, 0, 1, 0, 1, 0],
-    [ 0, 0, 1, 1, 1, 1, 1, 0, 1, 0],
-    [ 1, 0, 1, 0, 0, 0, 1, 0, 1, 0],
-    [ 1, 0, 1, 0, 1, 0, 1, 0, 0, 0],
-    [ 1, 0, 1, 0, 1, 0, 0, 1, 1, 0],
-    [-1, 0, 1, 0, 1, 1, 0, 0, 0, 0]
-];
-
-let player = {
-    x: 0,
-    y: 0
-};
-
-let width = canvas.width;
-let blockSize = width/board.length;
-let ctx = canvas.getContext('2d');
-ctx.setTransform(1, 0, 0, 1, 0, 0);
-ctx.clearRect(0, 0, width, width);
-ctx.fillStyle="white";
-for(var y = 0; y < board.length; y++){
-    for(var x = 0; x < board[y].length; x++){
-        //Draw a wall
-        if(board[y][x] === 1){
-            ctx.fillRect(x*blockSize, y*blockSize, blockSize, blockSize);
-        }
-        //Draw the goal
-        else if(board[y][x] === -1){
-            ctx.beginPath();
-            ctx.lineWidth = 5;
-            ctx.strokeStyle = "gold";
-            ctx.moveTo(x*blockSize, y*blockSize);
-            ctx.lineTo((x+1)*blockSize, (y+1)*blockSize);
-            ctx.moveTo(x*blockSize, (y+1)*blockSize);
-            ctx.lineTo((x+1)*blockSize, y*blockSize);
-            ctx.stroke();
-        }
-    }
-};
-
-
-
 const select = document.querySelector('select')
 const select1 = document.querySelector('#select1')
 const menus = [select,select1]
 const menusBlock = document.querySelector('#dropdowns')
+const newPlayerBtn = document.createElement('button');
 
 function allPlayers() {
     fetch(usersURL)
@@ -75,16 +24,107 @@ function dropDownMenu(player, dropdown) {
     const option = document.createElement('option')
     option.innerText = player.name
     dropdown.append(option)
-    dropdowns.addEventListener("change", (e) => playerSelected(player.name))
+    dropdown.addEventListener("change", () => {
+        playerSelected();
+        personalStats(player);
+    })
+
 };
 
-function playerSelected(player){
+function playerSelected(){
+    const info1 = document.querySelector("#info")
+    const currentPlayer = document.querySelector("#name")
+    currentPlayer.innerText = (select.value + " Statistics")
+    
+    const otherCurrentPlayer = document.querySelector("#name2")
+    otherCurrentPlayer.innerText = (select1.value + " Statistics")
+    info1.append(currentPlayer, otherCurrentPlayer)
+    return playerSelected
+
+}
+function personalStats(player){
+    const liWins = player.matches 
+        liWins.forEach(win => {
+            win.forEach(win => allStats(win))
+    })
+    
+    
+    // return personalStats
     
 }
 
+function allStats(win){
+    i = 0
+    if (win === true){
+        i +1
+    }else{
+        i +0
+    }
 
-// .then(() => changeLikeCounter())
-
-    // console.log(e.target.selectedIndex,e.target.parentNode.name)
 
 
+    // const ulRatio = document.querySelector("#stats")
+    // document.createElement("li")
+    
+    // ulRatio.append(liRatio)
+}
+
+
+newPlayerBtn.setAttribute("id", "button")
+newPlayerBtn.innerText = "Create Player"
+menusBlock.appendChild(newPlayerBtn);
+newPlayerBtn.addEventListener("click", () => {
+    newPlayerBtn.disabled = true;
+    newField()
+})
+
+function newField(){
+    const player_info = document.createElement("input");
+    player_info.setAttribute("id", "new-entry")
+    player_info.setAttribute("type", "text");
+    player_info.setAttribute("placeholder", "TYPE YOUR NAME...");
+    document.body.appendChild(player_info);
+    
+    const submit = document.createElement("button")
+    submit.innerText = ("Submit")
+    submit.setAttribute("class", "btn-success")
+    document.body.appendChild(submit)
+    
+    submit.addEventListener("click", (e) => {
+        e.preventDefault();
+        submit.disabled = true;
+        const newName = player_info.value 
+        
+        fetch(usersURL, {
+            method: "POST",
+            
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                name: newName,
+            })
+        })
+        .then(resp => resp.json())
+        .then(name => {eachPlayerGenerator(name, menus)})
+        // .then(()=>{
+            //     document.querySelector("#new-entry").reset();
+            // })
+        })
+        
+    }   
+    
+    
+    
+    
+    // function disableOppositeMenu(){
+    //     const firstSelection = select.value
+    //     const secondSelection = select1.value
+    //         if (firstSelection === secondSelection) {
+    //             secondSelection.disabled = true;
+    //         } else {
+    
+    //         }
+    // }
+    
+    
+    
+    

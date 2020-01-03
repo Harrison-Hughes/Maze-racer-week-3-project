@@ -10,3 +10,21 @@
 5.times do 
     User.create(name: Faker::FunnyName.name)
 end 
+
+
+Match.create(user_id: User.first.id, win: true , time: Time.now, opponent: "unknown")
+Match.create(user_id: User.second.id, win: true , time: Time.now, opponent: "unknown")
+Match.create(user_id: User.third.id, win: true , time: Time.now, opponent: "unknown")
+Match.create(user_id: User.fourth.id, win: false , time: Time.now, opponent: "unknown")
+Match.create(user_id: User.fifth.id, win: false , time: Time.now, opponent: "unknown")
+Match.create(user_id: User.all.sample.id, win: false, time: Time.now, opponent: "unknown")
+Match.create(user_id: User.all.sample.id, win: true, time: Time.now, opponent: "unknown")
+Match.create(user_id: User.all.sample.id, win: true, time: Time.now, opponent: "unknown")
+Match.create(user_id: User.all.sample.id, win: false, time: Time.now, opponent: "unknown")
+Match.create(user_id: User.all.sample.id, win: false, time: Time.now, opponent: "unknown")
+Match.create(user_id: User.all.sample.id, win: false, time: Time.now, opponent: "unknown")
+Match.create(user_id: User.all.sample.id, win: true, time: Time.now, opponent: "unknown")
+Match.create(user_id: User.all.sampl.id, win: true, time: Time.now, opponent: "unknown")
+Match.create(user_id: User.all.sample.id, win: true, time: Time.now, opponent: "unknown")
+Match.create(user_id: User.all.sample.id, win: true, time: Time.now, opponent: "unknown")
+Match.create(user_id: User.all.sample.id, win: true, time: Time.now, opponent: "unknown")

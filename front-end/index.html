@@ -1,43 +1,57 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+    <html lang="en" dir="ltr">
 
-<head>
-    <meta charset="utf-8">
-    <title>Maze racer game</title>
-    <link rel="shortcut icon" href="logo.jpeg">
-    <link rel="stylesheet" href="styles.css">
-</head>
+        <head>
+            <meta charset="utf-8">
+            <title>Maze racer game</title>
+            <link rel="shortcut icon" href="logo.jpeg">
+            <link rel="stylesheet" href="styles.css">
+            <script src="./src/index.js" defer></script>
+            <script src="./src/gameplay/route-store.js" defer></script>
+            <script src="./src/gameplay/board-maker.js" defer></script>
+            <script src="./src/gameplay/players.js" defer></script>
+            <script src="./src/gameplay/draw.js" defer></script>
+            <script src="./src/gameplay/game-over.js" defer></script>
+            <script src="./src/gameplay/controls.js" defer></script>
+            <script src="./src/homescreen.js" defer></script>
+        </head>
 
- <body>
-    <header>
-        <h1>MAZE RACER</h1>
-    </header>
+        <body>
+            <header>
+                <h1>MAZE RACER</h1>
+            </header>
 
-    <body> <h2>START</h2> </body>
+            <body> <h2>START</h2> </body>
 
-    <canvas id="GameBoardCanvas" width="400px" height="400px">
-    </canvas>
- 
-    <form name="form2", class="dropbtn">
-        <select>
-            <option>--Select a Player--</option>
-        </select>
-    </form>
-   
-    
-    <form name="form1", class="dropbtn">
-        <select>
-        <option>--Select a Player--</option>
-        </select>
-    </form>
+            <div id="info">
+                <h2 id="name"></h2>
+                        <ul id="stats"></ul>
+                            <br>
+                    <h2 id="name2"></h2>
+                            <br>
+                        <ul id="stats2"></ul>
+            </div>
 
-    <script src="./src/index.js"></script>
-    <script src="./src/gameplay/route-store.js"></script>
-    <script src="./src/gameplay/board-maker.js"></script>
-    <script src="./src/gameplay/players.js"></script>
-    <script src="./src/gameplay/draw.js"></script>
-    <script src="./src/gameplay/game-over.js"></script>
-    <script src="./src/gameplay/controls.js"></script>
-    <script src="./src/homescreen.js"></script>
-</body>
+            <canvas id="GameBoardCanvas" width="400px" height="400px">
+            </canvas>
+            <div id="dropdowns">
+                <form name="form2", class="dropbtn">
+                    <select>
+                        <option>--Select a Player--</option>
+                    </select>
+                </form>
+        
+                <form name="form1", class="dropbtn">
+                    <select id="select1">
+                        <option>--Select a Player--</option>
+                    </select>
+                </form>
+            </div>
+
+            <div id="leaderboard">
+
+            </div>
+        
+        </body>
 </html>
+

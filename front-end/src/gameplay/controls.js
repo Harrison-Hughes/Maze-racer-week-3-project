@@ -4,7 +4,7 @@ function canMove(x, y){
     return (y>=0) && (y<board.length) && (x >= 0) && (x < board[y].length) && (board[y][x] != 1);
 }
 
-window.addEventListener('keydown', enterDirection)
+canvas.addEventListener('keydown', enterDirection)
 
 function enterDirection(e) {
 
