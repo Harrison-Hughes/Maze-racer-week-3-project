@@ -66,6 +66,7 @@ function loadDraw() {
             })
         }, 90*y)
     })
+    setTimeout(function (){showLeaderboardAndInfo()}, 90*30+30*3);
 }
 
 

@@ -25,6 +25,8 @@ h1 {
   font: 50px Impact, monospace;
   letter-spacing: 8px;
   font-style: italic;
+  text-shadow: 2px 2px 5px white;
+  box-shadow: 2px 2px 5px black;
 }
 
 h2 {
@@ -37,6 +39,8 @@ h2 {
   letter-spacing: 8px;
   font-style: italic;
   cursor: pointer;
+  text-shadow: 2px 2px 5px var(--quatary);
+  box-shadow: 2px 2px 5px black;
 }
 
 .auto { 
@@ -68,6 +72,7 @@ h4 {
     display: block;
     width: 600px;
     visibility: hidden;
+    /* box-shadow: 2px 2px 5px black; */
 }
 
 .dropbtn {
@@ -81,7 +86,7 @@ h4 {
   top: 20px;
   left: 700px;
   bottom: 500px;
-  visibility: hidden;
+  /* visibility: hidden; */
 }
 
 .expand {
@@ -116,16 +121,6 @@ h4 {
 }
 
 
-#info {
-  background-color: #f42069;
-  position: absolute;
-  top:190px;
-  left: 400px;
-  width:500px;
-  height:610px;
-  border:1px solid rgb(250, 249, 249);
-}
-
 #new-entry {
   border: none;
   position: relative;
@@ -159,18 +154,33 @@ h4 {
 }
 
 #leaderboard{
-  background-color: #f42069;
+  background-color: var(--secondary);
+  color: var(--quatary);
   position: absolute;
   top:190px;
-  right: 400px;
+  right: 50px;
   width:500px;
   height:610px;
-  border:1px solid rgb(250, 249, 249);
+  visibility: hidden;
+  box-shadow: 2px 2px 5px black;
+  /* border:1px solid rgb(250, 249, 249); */
 }
+
+#info {
+  background-color: var(--secondary);
+  color: var(--quatary);
+  position: absolute;
+  top:190px;
+  left: 50px;
+  width:500px;
+  height:610px;
+  visibility: hidden;
+  box-shadow: 2px 2px 5px black;
+  /* border:1px solid rgb(250, 249, 249); */
+}
+
 .dropdown:hover .dropbtn {background-color: #97e399;}
 
 #container { 
   position: relative; 
 }
-
-/* .canvas { position: absolute;} */

@@ -92,3 +92,8 @@ const resetGates = () => {
     editCoordNum(14, 13, 25);
     editCoordNum(15, 16, 15); 
 }
+
+const showLeaderboardAndInfo = () => {
+    leaderboard.style.visibility = 'visible';
+    info.style.visibility = 'visible';
+}
