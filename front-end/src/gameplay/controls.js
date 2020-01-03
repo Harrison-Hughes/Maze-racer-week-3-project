@@ -10,12 +10,12 @@ function canMove(player, x, y){
     if (gameStarted === 1 && (y>=0) && (y<board.length) && (x >= 0) && (x < board[y].length) && 
     (board[y][x] === 0 || board[y][x] === -1 ||board[y][x] === 2 ) && player.unfrozen){
         if (player === player1) {
-            if (x === gate2coords[0] && y === gate2coords[1]) {return false}
+            if (y === gate2coords[0] && x === gate2coords[1]) {return false}
             else if (gate1 > 10 && x === gate1coords[0] && y === gate1coords[1]) {return false}
             else {return true}
         }
         else if (player === player2) {
-            if (x === gate1coords[0] && y === gate1coords[1]) {return false}
+            if (y === gate1coords[0] && x === gate1coords[1]) {return false}
             else if (gate2 > 20 && x === gate2coords[0] && y === gate2coords[1]) {return false}
             else {return true}
         }
