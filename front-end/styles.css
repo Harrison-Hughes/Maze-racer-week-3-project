@@ -1,14 +1,29 @@
+:root {
+  --primary: #ffacfc;
+  --secondary:  #f148fb;
+  --tertiary:  #7122fa;
+  --quatary:  #3f0960;
+}
+
+/* :root {
+  --primary: #e92efb;
+  --secondary:  #ff2079;
+  --tertiary:  #440bd4;
+  --quatary:  #04005e;
+} */
+
 body {
-    background-color: black;
+    background-color: var(--quatary);
 }
 
 h1 {
   text-align: center;
   margin: 10;
   padding: 100;
-  color: white;
-  background-color: #f42069;
-  font: 50px Courier, monospace;
+  color: var(--quatary);
+  background-color: var(--secondary);
+  font: 50px Impact, monospace;
+  letter-spacing: 8px;
   font-style: italic;
 }
 
@@ -16,15 +31,35 @@ h2 {
   text-align: center;
   margin: 10;
   padding: 100;
-  color: white;
-  background-color: #f42069;
+  color: var(--secondary);
+  background-color: var(--primary);
+  font: 30px Impact, monospace;
+  letter-spacing: 8px;
+  font-style: italic;
+  cursor: pointer;
+}
+
+.auto { 
+cursor: auto; 
+}
+
+.point { 
+  cursor: pointer; 
+}
+
+h4 {
+  text-align: center;
+  margin: 10;
+  padding: 100;
+  color: var(--secondary);
+  background-color: var(--primary);
   font: 30px Courier, monospace;
   font-style: italic;
+  visibility: hidden;
 }
 
 #GameBoardCanvas {
     text-align: center;
-    border: 1px solid blue;
     padding: 5px;
     padding-left: 0;
     padding-right: 0;
@@ -36,7 +71,8 @@ h2 {
 }
 
 .dropbtn {
-  color: white;
+  /* background-color: rgb(252, 253, 182); */
+  color: var(--primary);
   padding: 16px;
   font-size: 16px;
   border: none;
@@ -45,7 +81,11 @@ h2 {
   top: 20px;
   left: 700px;
   bottom: 500px;
-  width: 250px;
+  visibility: hidden;
+}
+
+.expand {
+  transition:transform 0.3s ease-out;
 }
 
 .dropdown-content a {
@@ -127,3 +167,10 @@ h2 {
   height:610px;
   border:1px solid rgb(250, 249, 249);
 }
+.dropdown:hover .dropbtn {background-color: #97e399;}
+
+#container { 
+  position: relative; 
+}
+
+/* .canvas { position: absolute;} */
