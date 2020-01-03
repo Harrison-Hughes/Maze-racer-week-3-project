@@ -6,6 +6,7 @@ const player1 = {
     won: false,
     targets: false,
     nextTarget: false,
+    name: "player1"
 };
 
 const player2 = {
@@ -16,4 +17,5 @@ const player2 = {
     won: false,
     targets: false,
     nextTarget: false,
+    name: "player2"
 };

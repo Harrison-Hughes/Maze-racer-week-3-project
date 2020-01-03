@@ -79,6 +79,10 @@ const checkGameOver = (player) => {
 
 const endGame = player => {
     player1.unfrozen = false; player2.unfrozen = false;
+    player.won = true; 
+    deconstruct(player);
+    setTimeout(function (){displayWinMessage(player)}, 3000);
+    
 }
 
 const checkHit = (player) => {

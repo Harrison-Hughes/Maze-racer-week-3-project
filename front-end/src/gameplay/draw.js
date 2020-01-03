@@ -163,3 +163,96 @@ function draw() {
         ctx.fill();
     };    
 }
+
+const deconstruct = (player) => {
+    draw();
+    let width = canvas.width; let blockSize = width/board.length; let ctx = canvas.getContext('2d');
+    ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.clearRect(0, 0, width, width);
+    
+    board.forEach(function (iY,y,aY){
+        setTimeout(function (){
+            // debugger
+        
+        iY.forEach(function (iX,x,aX){
+            setTimeout(function(iY,iX){
+
+            ctx.fillStyle=tertiary;
+            ctx.fillRect(x*blockSize, y*blockSize, blockSize, blockSize);
+
+            let half = blockSize/2;
+        
+            if (player === player1) {
+                ctx.beginPath();
+            ctx.fillStyle = "white";
+            ctx.arc(player1.x*blockSize+half, player1.y*blockSize+half, half, 0, 2*Math.PI);
+            ctx.fill();
+            }
+
+            if (player === player2) {
+                ctx.beginPath();
+            ctx.fillStyle = "black";
+            ctx.arc(player2.x*blockSize+half, player2.y*blockSize+half, half, 0, 2*Math.PI);
+            ctx.fill();
+            }
+            
+        },3*x)})
+    }, 90*y)
+})}
+
+const displayWinMessage = player => {
+
+    let width = canvas.width; let blockSize = width/board.length; let ctx = canvas.getContext('2d');
+
+    ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.clearRect(0, 0, width, width);
+
+    // for(let y = 0; y < board.length; y++){
+        board.forEach(function (iY,y,aY){
+            setTimeout(function (){
+            
+            iY.forEach(function (iX,x,aX){
+                setTimeout(function(iY,iX){
+
+                    //Fill in
+                    if (player === player1){
+                        if (player1victory[y][x] === 0){
+                            ctx.fillStyle='white';
+                            ctx.fillRect(x*blockSize, y*blockSize, blockSize, blockSize);
+                        }
+                        else if (player1victory[y][x] === 1){
+                            ctx.fillStyle='black';
+                            ctx.fillRect(x*blockSize, y*blockSize, blockSize, blockSize);
+                        }
+                    }
+
+                    if (player === player2){
+                        if (player2victory[y][x] === 0){
+                            ctx.fillStyle='black';
+                            ctx.fillRect(x*blockSize, y*blockSize, blockSize, blockSize);
+                        }
+                        else if (player2victory[y][x] === 1){
+                            ctx.fillStyle='white';
+                            ctx.fillRect(x*blockSize, y*blockSize, blockSize, blockSize);
+                        }}
+
+                    // let half = blockSize/2;
+
+                    // if (player === player1) {
+                    //     ctx.beginPath();
+                    // ctx.fillStyle = "white";
+                    // ctx.arc(player1.x*blockSize+half, player1.y*blockSize+half, half, 0, 2*Math.PI);
+                    // ctx.fill();
+                    // }
+        
+                    // if (player === player2) {
+                    //     ctx.beginPath();
+                    // ctx.fillStyle = "white";
+                    // ctx.arc(player2.x*blockSize+half, player2.y*blockSize+half, half, 0, 2*Math.PI);
+                    // ctx.fill();
+                    // }        
+
+                }, 30*x)
+            })
+        }, 30*y)
+    })
+    
+}
