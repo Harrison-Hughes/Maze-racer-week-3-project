@@ -23,51 +23,82 @@ function eachPlayerGenerator(player, menus){
 function dropDownMenu(player, dropdown) {
     const option = document.createElement('option')
     option.innerText = player.name
+    option.value = player.name
     dropdown.append(option)
-    dropdown.addEventListener("change", () => {
-        playerSelected();
-        personalStats(player);
-    })
+
 
 };
 
-function playerSelected(){
+menusBlock.addEventListener("change", e => {
+    const playerId = parseInt(e.target.selectedIndex)
+    const fromDropdown = e.target.parentNode.name
+    console.log(fromDropdown)
+    // debugger
+    getUser(playerId)
+    .then(player => {
+        if (fromDropdown === "form2") {
+            playerSelected(e.target,"",player);
+            
+        } else {
+            playerSelected(e.target,"2",player);
+            
+        }
+
+    })
+
+
+    // playerSelected(getUser(playerId))
+    // personalStats(player);
+})
+
+const getUser = id => {
+    return fetch(usersURL+"/"+id)
+    .then(resp => resp.json())
+}
+
+function playerSelected(select,name, player){
     const info1 = document.querySelector("#info")
-    const currentPlayer = document.querySelector("#name")
+    const stat = document.querySelector(`#stats${name}`)
+    const currentPlayer = document.querySelector(`#name${name}`)
     currentPlayer.innerText = (select.value + " Statistics")
+    stat.innerText = personalStats(player)
     
-    const otherCurrentPlayer = document.querySelector("#name2")
-    otherCurrentPlayer.innerText = (select1.value + " Statistics")
-    info1.append(currentPlayer, otherCurrentPlayer)
-    return playerSelected
+    // const otherCurrentPlayer = document.querySelector("#name2")
+    // otherCurrentPlayer.innerText = (select1.value + " Statistics")
+    info1.append(currentPlayer)
+    // return playerSelected
 
 }
 function personalStats(player){
     const liWins = player.matches 
-        liWins.forEach(win => {
-            win.forEach(win => allStats(win))
-    })
+    const filteredWins = liWins.filter(win => win.win === true)
+    const avg = filteredWins.length / liWins.length
+    
+    // debugger
+        return avg*100
+
+        // console.log(filteredWins)
+            
+    }
     
     
     // return personalStats
     
-}
-
-function allStats(win){
-    i = 0
-    if (win === true){
-        i +1
-    }else{
-        i +0
-    }
 
 
+// function winStats(win){
+//     const playerWin = win.win
+//         if (playerWin == true)
+    // const li = win.matches.map (|m| m.win ? 1 : 0)
+    
+
+    
 
     // const ulRatio = document.querySelector("#stats")
     // document.createElement("li")
     
     // ulRatio.append(liRatio)
-}
+
 
 
 newPlayerBtn.setAttribute("id", "button")
@@ -128,3 +159,4 @@ function newField(){
     
     
     
+    // User.second.matches.map {|m| m.win ? 1 : 0}

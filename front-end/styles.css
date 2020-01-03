@@ -81,7 +81,7 @@ h4 {
   top: 20px;
   left: 700px;
   bottom: 500px;
-  visibility: hidden;
+  /* visibility: hidden; */
 }
 
 .expand {
