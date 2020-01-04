@@ -34,16 +34,17 @@ function dropDownMenu(player, dropdown) {
 function playerSelected(){
     const info1 = document.querySelector("#info")
     const currentPlayer = document.querySelector("#name")
-    currentPlayer.innerText = (select.value + " Statistics")
+    currentPlayer.innerText = (select.value + " - Stats")
     
     const otherCurrentPlayer = document.querySelector("#name2")
-    otherCurrentPlayer.innerText = (select1.value + " Statistics")
+    otherCurrentPlayer.innerText = (select1.value + " -  Stats")
     info1.append(currentPlayer, otherCurrentPlayer)
     return playerSelected
 
 }
 function personalStats(player){
-    const liWins = player.matches 
+    const liWins = player.matches;
+    // debugger
         liWins.forEach(win => {
             win.forEach(win => allStats(win))
     })
@@ -71,7 +72,7 @@ function allStats(win){
 
 
 newPlayerBtn.setAttribute("id", "button")
-newPlayerBtn.innerText = "Create Player"
+newPlayerBtn.innerText = "Add New Player"
 menusBlock.appendChild(newPlayerBtn);
 newPlayerBtn.addEventListener("click", () => {
     newPlayerBtn.disabled = true;

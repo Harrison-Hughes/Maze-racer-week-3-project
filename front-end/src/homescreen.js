@@ -94,6 +94,16 @@ const resetGates = () => {
 }
 
 const showLeaderboardAndInfo = () => {
-    leaderboard.style.visibility = 'visible';
+    // leaderboard.style.visibility = 'visible';
     info.style.visibility = 'visible';
+}
+
+const showButton = () => {
+    let btn = document.querySelector('#button');
+    btn.style.visibility = 'visible';
+}
+
+const showDropdowns = () => {
+    let drops = document.querySelectorAll('.dropbtn');
+    drops.forEach(drop => drop.style.visibility = 'visible');
 }

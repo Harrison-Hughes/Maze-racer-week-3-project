@@ -12,7 +12,6 @@
             <script src="./src/gameplay/board-maker.js" defer></script>
             <script src="./src/gameplay/players.js" defer></script>
             <script src="./src/gameplay/draw.js" defer></script>
-            <script src="./src/gameplay/game-over.js" defer></script>
             <script src="./src/gameplay/controls.js" defer></script>
             <script src="./src/homescreen.js" defer></script>
         </head>
@@ -25,12 +24,20 @@
             <body> <h2>LOAD</h2> </body>
 
             <div id="info">
-                <h2 id="name"></h2>
-                        <ul id="stats"></ul>
+                <h2 id="name">RULES</h2><b>
+                        <ul id="stats">RACE TO THE CENTRE
+                        </ul>
+                        <ul>COLLECT 5 TOKENS ON THE WAY
+                        </ul>
+                        <ul>CAN ONLY ENTER THROUGH YOUR GATE
+                        </ul>
+                            <br></b>
+                    <h2 id="name2">CONTROLS</h2>
                             <br>
-                    <h2 id="name2"></h2>
-                            <br>
-                        <ul id="stats2"></ul>
+                            <ul>UP    LEFT    DOWN    RIGHT</ul>
+                        <ul id="stats2">player 1, black – w, a, s, d</ul>
+                        <ul>player 2, white – i, j, k, l
+                        </ul>
             </div>
 
             <canvas id="GameBoardCanvas" width="400px" height="400px">
@@ -38,13 +45,13 @@
             <div id="dropdowns">
                 <form name="form2", class="dropbtn">
                     <select>
-                        <option>--Select a Player--</option>
+                        <option>--PLAYER 1--</option>
                     </select>
                 </form>
         
                 <form name="form1", class="dropbtn">
                     <select id="select1">
-                        <option>--Select a Player--</option>
+                        <option>--PLAYER 2--</option>
                     </select>
                 </form>
             </div>

@@ -66,7 +66,8 @@ function loadDraw() {
             })
         }, 90*y)
     })
-    setTimeout(function (){showLeaderboardAndInfo()}, 90*30+30*3);
+    setTimeout(function (){showLeaderboardAndInfo()}, 90*32);
+    // setTimeout(function (){showButton(); showDropdowns()}, 90*31);
 }
 
 

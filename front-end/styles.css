@@ -43,6 +43,20 @@ h2 {
   box-shadow: 2px 2px 5px black;
 }
 
+#info h2 {
+  text-align: center;
+  margin: 10;
+  padding: 100;
+  color: var(--quatary);
+  background-color: var(--primary);
+  font: 30px Impact, monospace;
+  letter-spacing: 8px;
+  font-style: italic;
+  cursor: pointer;
+  text-shadow: 2px 2px 5px white;
+  box-shadow: 2px 2px 5px black;
+}
+
 .auto { 
 cursor: auto; 
 }
@@ -84,9 +98,9 @@ h4 {
   position: relative;
   display: inline-block;
   top: 20px;
-  left: 700px;
+  left: 815px;
   bottom: 500px;
-  /* visibility: hidden; */
+  visibility: hidden;
 }
 
 .expand {
@@ -105,12 +119,13 @@ h4 {
   border: none;
   position: relative;
   display: inline-block;
-  top: 20px;
-  left: 600px;
-  bottom: 500px;
-  font-size: 20px;
-  border-radius: 8px;
-  width: 250px;
+   top: 0px;
+  left: 625px;
+  bottom: 510px;
+  visibility: hidden;
+  /* font-size: 20px; */
+  /* border-radius: 8px; */
+  /* width: 250px; */
 }
 
 #winners {
@@ -126,11 +141,12 @@ h4 {
   position: relative;
   display: inline-block;
   top: 20px;
-  left: 550px;
+  left: 740px;
   bottom: 500px;
-  font-size: 20px;
-  border-radius: 8px;
-  width: 250px;
+  font-size: 15px;
+  border-radius: 6px;
+  width: 200px;
+  visibility: hidden;
 }
 
 .btn-success{
@@ -138,25 +154,29 @@ h4 {
   position: relative;
   display: inline-block;
   top: 20px;
-  left: 600px;
+  left: 760px;
   bottom: 500px;
-  font-size: 20px;
-  border-radius: 8px;
-  width: 250px;
+  font-size: 15px;
+  border-radius: 6px;
+  width: 200px;
+  visibility: hidden;
 }
 
 #name{
-  font-family: "Lucida Console";
+  font: 30px Impact, monospace;
+  font-style: italic;
 }
 
 #name2{
-  font-family: "Lucida Console";
+  font: 30px Impact, monospace;
+  font-style: italic;
 }
 
 #leaderboard{
   background-color: var(--secondary);
   color: var(--quatary);
   position: absolute;
+  font-style: italic;
   top:190px;
   right: 50px;
   width:500px;
@@ -169,11 +189,13 @@ h4 {
 #info {
   background-color: var(--secondary);
   color: var(--quatary);
+  font: 20px Impact, monospace;
+  font-style: italic;
   position: absolute;
   top:190px;
   left: 50px;
-  width:500px;
-  height:610px;
+  width:350px;
+  height:600px;
   visibility: hidden;
   box-shadow: 2px 2px 5px black;
   /* border:1px solid rgb(250, 249, 249); */
@@ -183,4 +205,14 @@ h4 {
 
 #container { 
   position: relative; 
+}
+
+#select1 {
+  text-align: center;
+    padding: 100px;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
 }
